@@ -1,7 +1,9 @@
 package top.dl.leetCode;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +39,7 @@ public class l3_loggest {
         int end = 0;
         int max = 0;
         for (int i = 0; i < chars.length; i++) {
+
             if(chars[i]!='\0'){// 非空判断
                 Integer o = map.get(chars[i]);// 在重复表里拿值
                 if(o==null){                  // 拿不到，则是新的字符
@@ -68,7 +71,10 @@ public class l3_loggest {
 
     @Test
     public void test(){
+        long l = System.currentTimeMillis();
         int abc = lengthOfLongestSubstring("tmmzuxt");
+        long l1 = System.currentTimeMillis();
+        System.out.println((l1-l));
         System.out.println(abc);
     }
 }
