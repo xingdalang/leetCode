@@ -31,10 +31,7 @@ public class Add_two_numbers {
             int val = 0;
             ListNode re = null;
             ListNode r = re;
-            while(a != null || b != null || val!=0){
-                if(a==null && b == null){
-                    val = val;
-                }else {
+            while(a != null || b != null){
                     if (a == null) {
                         val = val + b.val;
                     } else if (b == null) {
@@ -42,7 +39,6 @@ public class Add_two_numbers {
                     } else {
                         val = val + a.val + b.val;
                     }
-                }
                 if(re==null){
                     re = new ListNode(val%10);
                     r = re;
@@ -58,9 +54,9 @@ public class Add_two_numbers {
                     b = b.next;
                 }
             }
-      /*      if(val!=0){
+            if(val!=0){
                 r.next = new ListNode(val);
-            }*/
+            }
 
             return re;
         }
