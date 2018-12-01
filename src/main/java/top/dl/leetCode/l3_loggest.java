@@ -32,14 +32,13 @@ public class l3_loggest {
 
     public int lengthOfLongestSubstring(String s) {
         char[] chars = s.toCharArray();
-        Map map = new HashMap();
+        Map<Object,Integer> map = new HashMap();
         int start = 0;
         int end = 0;
         int max = 0;
-        boolean init = true;
         for (int i = 0; i < chars.length; i++) {
             if(chars[i]!='\0'){
-                Object o = map.get(chars[i]);
+                Integer o = map.get(chars[i]);
                 if(o==null){
                     map.put(chars[i],i);
                     end = i;
@@ -48,7 +47,7 @@ public class l3_loggest {
                         max = i1;
                     }
                 }else {
-                    int x = (Integer) o;
+                    int x =  o;
                     if(x >= start){
                         int i1 = x - start +1;
                         if(i1 - max > 0){
