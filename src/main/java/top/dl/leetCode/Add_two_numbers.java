@@ -29,18 +29,27 @@ public class Add_two_numbers {
             ListNode a = l1;
             ListNode b = l2;
             int val = 0;
-            ListNode re = new ListNode(0);
+            ListNode re = null;
             ListNode r = re;
-            while(a != null || b != null){
-                if(a == null){
-                    val = val + b.val;
-                }else if(b == null){
-                    val = val + a.val;
+            while(a != null || b != null || val!=0){
+                if(a==null && b == null){
+                    val = val;
                 }else {
-                    val = val + a.val + b.val;
+                    if (a == null) {
+                        val = val + b.val;
+                    } else if (b == null) {
+                        val = val + a.val;
+                    } else {
+                        val = val + a.val + b.val;
+                    }
                 }
-                r.next = new ListNode(val%10);
-                r = r.next;
+                if(re==null){
+                    re = new ListNode(val%10);
+                    r = re;
+                }else {
+                    r.next = new ListNode(val%10);
+                    r = r.next;
+                }
                 val = val / 10;
                 if(a != null){
                     a = a.next;
@@ -49,6 +58,10 @@ public class Add_two_numbers {
                     b = b.next;
                 }
             }
+      /*      if(val!=0){
+                r.next = new ListNode(val);
+            }*/
+
             return re;
         }
 
@@ -62,8 +75,8 @@ public class Add_two_numbers {
 
     @Test
     public void testt(){
-            ListNode a = new ListNode(0);
-            ListNode b = new ListNode(0);
+            ListNode a = new ListNode(5);
+            ListNode b = new ListNode(5);
             ListNode l1 = new ListNode(0);
             ListNode l2 = new ListNode(0);
             ListNode l3 = new ListNode(0);
@@ -73,18 +86,18 @@ public class Add_two_numbers {
             ListNode l7 = new ListNode(0);
             ListNode l8 = new ListNode(0);
             ListNode l9 = new ListNode(0);
-            a.next=l1;
+           /* a.next=l1;
             l1.next=l3;
             l3.next=l5;
             l5.next=l7;
-            l7.next=l9;
+            l7.next=l9;*/
 
-            b.next=l2;
+         /*   b.next=l2;
             l2.next=l4;
             l4.next=l6;
             l6.next=l8;
-
-
+*/
+        System.out.println("a:"+JSON.toJSONString(a));
         ListNode listNode = addTwoNumbers(a, b);
         System.out.println(JSON.toJSONString(listNode));
     }
