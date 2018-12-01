@@ -37,24 +37,23 @@ public class l3_loggest {
         int end = 0;
         int max = 0;
         for (int i = 0; i < chars.length; i++) {
-            if(chars[i]!='\0'){
-                Integer o = map.get(chars[i]);
-                if(o==null){
-                    map.put(chars[i],i);
-                    end = i;
-                    int i1 = end - start + 1;
+            if(chars[i]!='\0'){// 非空判断
+                Integer o = map.get(chars[i]);// 在重复表里拿值
+                if(o==null){                  // 拿不到，则是新的字符
+                    map.put(chars[i],i);      // put进去 该字符和位置
+                    end = i;                  // 刷新字符串的结尾位置
+                    int i1 = end - start + 1; // 设置最大字符串长度
                     if(i1>max){
                         max = i1;
                     }
-                }else {
-                    int x =  o;
-                    if(x >= start){
-                        int i1 = x - start +1;
-                        if(i1 - max > 0){
+                }else {                         // 有重复字符
+                    if(o >= start){             // 重复字符串在目前字符串里面，进行判断处理
+                        int i1 = o - start +1;  // 处理最新的最大字符串长度
+                        if(i1 - max > 0) {
                             max = i1;
                         }
-                        start = x+1;
-                    }
+                        start = o+1;            // 刷新字符串，开始位置为目前字符的上次位置加1
+                    }                           // 没有在目前的字符串里面，刷新最新位置
                     map.put(chars[i],i);
                 }
                 end = i;
